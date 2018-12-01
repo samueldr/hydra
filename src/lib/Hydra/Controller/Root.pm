@@ -42,6 +42,7 @@ sub begin :Private {
     $c->stash->{nixVersion} = $ENV{"NIX_RELEASE"} || "<devel>";
     $c->stash->{curTime} = time;
     $c->stash->{logo} = defined $c->config->{hydra_logo} ? "/logo" : "";
+    $c->stash->{brand} = defined $c->config->{hydra_brand} ? $c->config->{hydra_brand} : "Hydra";
     $c->stash->{tracker} = $ENV{"HYDRA_TRACKER"};
     $c->stash->{flashMsg} = $c->flash->{flashMsg};
     $c->stash->{successMsg} = $c->flash->{successMsg};

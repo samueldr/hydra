@@ -20,6 +20,10 @@ div.skip-topbar {
     max-height: 25px;
     overflow: hidden;
 }
+.navbar .brand .logo + .name {
+	margin-left: 10px;
+	vertical-align: middle;
+}
 
 th {
     text-align: left;
