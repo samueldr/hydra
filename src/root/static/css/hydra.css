@@ -10,9 +10,15 @@ div.skip-topbar {
     }
 }
 
+.navbar .brand {
+	padding-top: 0;
+	padding-bottom: 0;
+	line-height: 38px;
+}
+
 .logo {
-    margin-top: -10px;
-    height: 25px;
+    max-height: 25px;
+    overflow: hidden;
 }
 
 th {
