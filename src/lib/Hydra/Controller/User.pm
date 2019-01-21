@@ -347,9 +347,8 @@ sub dashboard :Chained('dashboard_base') :PathPart('') :Args(0) {
 }
 
 
-sub my_jobs_tab :Chained('dashboard_base') :PathPart('my-jobs-tab') :Args(0) {
+sub my_jobs_tab :Chained('dashboard_base') :PathPart('my-jobs-tab') :Args(0) :Lazy {
     my ($self, $c) = @_;
-    $c->stash->{lazy} = 1;
     $c->stash->{template} = 'dashboard-my-jobs-tab.tt';
 
     error($c, "No email address is set for this user.") unless $c->stash->{user}->emailaddress;

@@ -226,6 +226,10 @@ sub default :Path {
 sub end : ActionClass('RenderView') {
     my ($self, $c) = @_;
 
+    if ($c->action->attributes->{Lazy}) {
+        $c->response->headers->header('X-Hydra-Lazy', 'Yes');
+    }
+
     if (defined $c->stash->{json}) {
         if (scalar @{$c->error}) {
             # FIXME: dunno why we need to do decode_utf8 here.
@@ -237,8 +241,7 @@ sub end : ActionClass('RenderView') {
 
     elsif (scalar @{$c->error}) {
         $c->stash->{resource} = { error => join "\n", @{$c->error} };
-        if ($c->stash->{lazy}) {
-            $c->response->headers->header('X-Hydra-Lazy', 'Yes');
+        if ($c->action->attributes->{Lazy}) {
             $c->stash->{template} = 'lazy_error.tt';
         }
         else {
